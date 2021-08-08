@@ -42,3 +42,27 @@ for _ in range(int(input())):
                 sum+=1
             i-=lst[j]
     print(sum)
+
+
+
+
+# Another solution and this one from CodeNCode . This is easy one .
+
+for _ in range(int(input())):
+    n=int(input());d=[]
+    lst=[int(x) for x in input().split()]
+    for i in range(n):
+        d.append((lst[i],i+1))
+    d.sort();cnt=0
+# প্রত্যেকটা ভ্যালু আর তার ইনডেক্স কে একটা পেয়ার করে সর্ট করে নিলাম । 
+    for i in range(n-1):
+        for j in range(i+1,n):
+            R=d[i][0]*d[j][0]
+            L=d[i][1]+d[j][1]
+            if R >2*n:
+                break
+# i এর মান সর্বোচ্চ যেতে পারবে n-1 পর্যন্ত আর j যেতে পারবে n পর্যন্ত । তাহলে i+j সর্বোচ্চ হতে পারবে 2n-1 . তাহলে ২ টা সংখ্যার গুনফল (R) > 2n হলে আর তো চেক করার দরকার নাই । লুপ থেকে বের
+# হয়ে গেলাম । কারন ভ্যালু গুলো সর্ট করা আছে । এবং এই কন্ডিশন টার জন্যেই টিএলই খাবে না । 
+            elif R==L:
+                cnt+=1
+    print(cnt)
